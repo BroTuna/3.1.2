@@ -2,17 +2,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>User</title>
+    <title>Title</title>
 </head>
 <body>
-<p> Name:  <span th:text="${user.getName()}"/></p>
-<p> Surname: <span th:text="${user.getSurname()}"/></p>
-<p> Salary: <span th:text="${user.getSalary()}"/></p>
-<p> Department: <span th:text="${user.getDepartment()}"/></p>
+<p th:text="${user.toString()}">Value</p>
+
+<br><hr>
+</div>
+<p><a href="/logout">Exit</a></p>
+</div>
+</form>
 </body>
-
-</div>
-<p><a href="/logout">Logout</a></p>
-</div>
-
 </html>

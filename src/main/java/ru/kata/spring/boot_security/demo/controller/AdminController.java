@@ -28,13 +28,13 @@ public class AdminController {
     }
 
     @GetMapping("/admin/{id}")
-    public String show(@PathVariable("id") int id, Model model) {
+    public String showUser(@PathVariable("id") int id, Model model) {
         model.addAttribute("user", userService.getUser(id));
         return "show";
     }
 
     @GetMapping("/admin/new")
-    public String getCreteUserTable(Model model) {
+    public String getCreateUserList(Model model) {
         model.addAttribute("user", new User());
         model.addAttribute("allRoles", userService.getAllRoles());
         return "new";
@@ -51,7 +51,6 @@ public class AdminController {
     @GetMapping("/admin/{id}/edit")
     public String editUser(Model model,@PathVariable("id") int id) {
         model.addAttribute("user", userService.getUser(id));
-        model.addAttribute("allRoles", userService.getAllRoles());
         return "edit";
     }
 

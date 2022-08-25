@@ -39,6 +39,7 @@ public class User implements UserDetails {
     public String getUsername() {
         return username;
     }
+
     public User(Integer id, String name, String surname, Integer salary, String department, String username, String password, List<Role> roles) {
         this.id = id;
         this.name = name;
@@ -75,7 +76,7 @@ public class User implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return roles;
+        return null;
     }
 
     public String getPassword() {
@@ -86,7 +87,7 @@ public class User implements UserDetails {
         this.password = password;
     }
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
@@ -147,12 +148,10 @@ public class User implements UserDetails {
     @Override
     public String toString() {
         return "User{" +
-                "id=" + id +
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 ", salary=" + salary +
                 ", department='" + department + '\'' +
-                ", username='" + username + '\'' +
                 '}';
     }
 }
